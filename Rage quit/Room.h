@@ -6,7 +6,7 @@
 class Room :public sf::Drawable, public sf::Transformable
 {
 public:
-	Room(sf::Vector2u position,sf::Vector2u size, sf::Texture &tile_texture);
+	Room(sf::Vector2u position,sf::Vector2u size, sf::Texture &tile_texture, sf::Vector2f tile_size);
 	~Room();
 
 private:

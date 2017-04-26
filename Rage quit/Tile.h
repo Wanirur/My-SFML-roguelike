@@ -5,8 +5,8 @@
 class Tile :public sf::Drawable, public sf::Transformable
 {
 public:
-	Tile(sf::Vector2f position, sf::Texture &texture);
-	Tile(sf::Vector2f position, sf::Texture &texture, unsigned int tile_number);
+	Tile(sf::Vector2f position, sf::Texture &texture, sf::Vector2f size);
+	Tile(sf::Vector2f position, sf::Texture &texture, sf::Vector2f size, unsigned tile_number);
 	~Tile();
 
 	void setType(unsigned int tile_number);

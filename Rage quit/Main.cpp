@@ -2,7 +2,8 @@
 #include "Player.h"
 #include "Platform.h"
 #include "Map.h"
-#include "Configure.h"
+
+#define VIEW_SIZE 512.0f
 
 void resize(const sf::RenderWindow &window, sf::View &view)
 {
@@ -29,9 +30,9 @@ int main()
 	Platform platform1(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, 200.0f));
 	Platform platform2(nullptr, sf::Vector2f(200.0f, 200.0f), sf::Vector2f(100.0f, 0.0f));
 
-	Map map(map_texture);
+	Map map(map_texture, sf::Vector2u(75,75), 3, sf::Vector2f(20.0f,20.0f));
 	map.generate();
-	map.buildMap();
+	
 
 	Player player(&player_texture, sf::Vector2u(4, 5), 0.1f, 1390.0f, map.getEnterPosition());
 

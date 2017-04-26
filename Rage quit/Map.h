@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Configure.h"
+#include "Path.h"
+#include "Room.h"
 #include <SFML/Graphics.hpp>
 
 /*******************
@@ -15,14 +16,12 @@
 class Map :public sf::Drawable, public sf::Transformable
 {
 public:
-	Map(sf::Texture& texture);
+	Map(sf::Texture& texture, sf::Vector2u size, unsigned branches_quantity, sf::Vector2f tile_size);
 
 	void generate();
 
 	bool save();
 	bool load();
-
-	void buildMap();
 
 	sf::Vector2f getEnterPosition();
 private:
@@ -38,15 +37,14 @@ private:
 		HORIZONTAL,
 		VERTICAL
 	};
+	
+	sf::Vector2u size;
+	Path path;
+	std::vector <Room> rooms;
 
-
-	sf::VertexArray floor;
-	sf::VertexArray walls;
-	unsigned int tiles[MAP_SIZE][MAP_SIZE];
-	unsigned int objects[MAP_SIZE][MAP_SIZE];
 	sf::Texture texture;
-
-	sf::Vector2f map_enter_position;
+	sf::Vector2u enter_position;
+	sf::Vector2u exit_position;
 
 	enum TileSet
 	{

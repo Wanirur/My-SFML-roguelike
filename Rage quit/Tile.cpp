@@ -2,19 +2,21 @@
 
 
 
-Tile::Tile(sf::Vector2f position, sf::Texture &texture)
-	:FLOOR(59), size(16.0f, 16.0f)
+Tile::Tile(sf::Vector2f position, sf::Texture &texture, sf::Vector2f size)
+	:FLOOR(59)
 {
 	this->position = position;
 	this->texture = texture;
+	this->size = size;
 
 }
 
-Tile::Tile(sf::Vector2f position, sf::Texture &texture, unsigned int tile_number)
+Tile::Tile(sf::Vector2f position, sf::Texture &texture, sf::Vector2f size, unsigned tile_number)
 	:FLOOR(59), size(16.0f,16.0f)
 {
 	this->position = position;
 	this->texture = texture;
+	this->size = size;
 
 	this->type = tile_number;
 

@@ -2,7 +2,7 @@
 
 
 
-Path::Path(sf::Vector2u begin_position, sf::Vector2u end_position, unsigned int branches_quantity, sf::Texture &tileset)
+Path::Path(sf::Vector2u begin_position, sf::Vector2u end_position, unsigned int branches_quantity, sf::Texture &tileset, sf::Vector2f tile_size)
 	:FLOOR(59)
 {
 	this->begin_position = begin_position;
@@ -10,11 +10,16 @@ Path::Path(sf::Vector2u begin_position, sf::Vector2u end_position, unsigned int 
 	this->branches_quantity = branches_quantity;
 	this->tileset = tileset;
 
-	buildPath();
+	buildPath(tile_size);
 }
 
 Path::~Path()
 {
+}
+
+std::size_t Path::getSize() const
+{
+	return path.size();
 }
 
 void Path::draw(sf::RenderTarget & target, sf::RenderStates states) const
@@ -25,7 +30,7 @@ void Path::draw(sf::RenderTarget & target, sf::RenderStates states) const
 		target.draw(path[i], states);
 }
 
-void Path::buildPath()
+void Path::buildPath(sf::Vector2f tile_size)
 {
 	sf::Vector2u tile_generating(begin_position);
 
@@ -90,7 +95,7 @@ void Path::buildPath()
 			}
 			break;
 		}
-		path.push_back(Tile(sf::Vector2f(tile_generating), tileset, FLOOR));
+		path.push_back(Tile(sf::Vector2f(tile_generating), tileset, tile_size, FLOOR));
 
 		for (std::size_t i = 0; i < path.size() - 1; i++)
 		{

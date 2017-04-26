@@ -2,7 +2,7 @@
 
 
 
-Room::Room(sf::Vector2u position, sf::Vector2u size, sf::Texture &tile_texture)
+Room::Room(sf::Vector2u position, sf::Vector2u size, sf::Texture &tile_texture, sf::Vector2f tile_size)
 {
 	this->position = position;
 	this->size = size;
@@ -11,7 +11,7 @@ Room::Room(sf::Vector2u position, sf::Vector2u size, sf::Texture &tile_texture)
 	{
 		for (std::size_t j = 0; j <= size.y; j++)
 		{
-			room.push_back(Tile(sf::Vector2f(float(position.x + i), float(position.y + j)),tile_texture));
+			room.push_back(Tile(sf::Vector2f(float(position.x + i), float(position.y + j)),tile_texture, tile_size));
 
 			if (i == 0)
 			{
